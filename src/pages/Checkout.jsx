@@ -243,20 +243,34 @@ export default function Checkout() {
 function Steps({ current }) {
   const steps = ["Cart", "Checkout", "Payment", "Confirmation"];
   return (
-    <div className="flex items-center justify-center gap-3">
-      {steps.map((s, i) => (
-        <div key={s} className="flex items-center gap-3">
-          <div
-            className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium ${
-              i + 1 <= current ? "bg-gold text-white" : "border border-cream-deep text-ink-soft"
-            }`}
-          >
-            {i + 1}
+    <div>
+      <div className="flex items-center justify-between gap-2 sm:hidden">
+        <span className="text-xs font-medium text-ink">
+          Step {current} of {steps.length} <span className="font-normal text-ink-soft">&middot; {steps[current - 1]}</span>
+        </span>
+      </div>
+      <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-cream-deep sm:hidden">
+        <div
+          className="h-full rounded-full bg-gold transition-all"
+          style={{ width: `${(current / steps.length) * 100}%` }}
+        />
+      </div>
+
+      <div className="hidden items-center justify-center gap-3 sm:flex">
+        {steps.map((s, i) => (
+          <div key={s} className="flex items-center gap-3">
+            <div
+              className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium ${
+                i + 1 <= current ? "bg-gold text-white" : "border border-cream-deep text-ink-soft"
+              }`}
+            >
+              {i + 1}
+            </div>
+            <span className={`text-xs ${i + 1 === current ? "font-medium text-ink" : "text-ink-soft"}`}>{s}</span>
+            {i < steps.length - 1 && <div className="h-px w-10 bg-cream-deep" />}
           </div>
-          <span className={`text-xs ${i + 1 === current ? "font-medium text-ink" : "text-ink-soft"}`}>{s}</span>
-          {i < steps.length - 1 && <div className="h-px w-10 bg-cream-deep" />}
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
