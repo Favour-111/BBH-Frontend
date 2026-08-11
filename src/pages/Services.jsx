@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Sparkles, Camera, Handshake, Check, MessageCircle, ClipboardList, Lightbulb, TrendingUp } from "lucide-react";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
+import whatIDoImage from "../../assets/image/8BAABB90-74BE-4355-9510-F0BD11FC75B7_1_201_a.jpeg";
 
 const services = [
   {
@@ -61,7 +62,7 @@ export default function Services() {
         </div>
         <div className="aspect-[4/3] overflow-hidden rounded-lg bg-cream-deep">
           <img
-            src="../assets/image/8BAABB90-74BE-4355-9510-F0BD11FC75B7_1_201_a.jpeg"
+            src={whatIDoImage}
             alt=""
             loading="lazy"
             className="h-full w-full object-cover"
