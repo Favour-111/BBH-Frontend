@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Heart, ShoppingBag, Loader2 } from "lucide-react";
 import clsx from "clsx";
 import { formatNaira } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCartStore } from "../../store/cartStore.js";
 import toast from "react-hot-toast";
@@ -36,7 +37,7 @@ export default function ProductCard({ product }) {
       <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-cream-deep">
         {product.images?.[0]?.url ? (
           <img
-            src={product.images[0].url}
+            src={mediaUrl(product.images[0].url)}
             alt={product.name}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

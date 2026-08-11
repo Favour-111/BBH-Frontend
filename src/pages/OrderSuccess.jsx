@@ -4,6 +4,7 @@ import { CheckCircle2, Copy, XCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../lib/api.js";
 import { formatNaira, formatDateTime } from "../lib/format.js";
+import { mediaUrl } from "../lib/media.js";
 import { useCartStore } from "../store/cartStore.js";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
@@ -145,7 +146,7 @@ export default function OrderSuccess() {
         <div className="space-y-3">
           {order.products.map((item, i) => (
             <div key={i} className="flex items-center gap-3">
-              <img src={item.image} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
+              <img src={mediaUrl(item.image)} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
               <div className="flex-1">
                 <p className="text-xs font-medium text-ink line-clamp-1">{item.name}</p>
                 <p className="text-[11px] text-ink-soft">Qty: {item.quantity}</p>

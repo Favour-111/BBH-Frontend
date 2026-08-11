@@ -4,6 +4,7 @@ import { Heart, ShoppingBag, Trash2, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../../lib/api.js";
 import { formatNaira } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCartStore } from "../../store/cartStore.js";
 import EmptyState from "../../components/ui/EmptyState.jsx";
@@ -78,7 +79,7 @@ export default function Wishlist() {
         {products.map((p) => (
           <div key={p._id} className="rounded-lg bg-white p-3 shadow-sm">
             <Link to={`/product/${p.slug}`} className="block aspect-square overflow-hidden rounded-md bg-cream-deep">
-              <img src={p.images?.[0]?.url} alt={p.name} className="h-full w-full object-cover" />
+              <img src={mediaUrl(p.images?.[0]?.url)} alt={p.name} className="h-full w-full object-cover" />
             </Link>
             <div className="mt-3">
               <Link to={`/product/${p.slug}`} className="text-sm font-medium text-ink line-clamp-1 hover:text-gold">

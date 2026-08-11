@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingBag, Eye } from "lucide-react";
 import api from "../../lib/api.js";
 import { formatNaira, formatDate } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import Badge from "../../components/ui/Badge.jsx";
 import EmptyState from "../../components/ui/EmptyState.jsx";
 import Button from "../../components/ui/Button.jsx";
@@ -45,7 +46,7 @@ export default function Orders() {
       <div className="overflow-hidden rounded-lg bg-white shadow-sm">
         {orders.map((o) => (
           <div key={o._id} className="flex flex-wrap items-center gap-4 border-b border-cream-deep p-5 last:border-0">
-            <img src={o.products[0]?.image} className="h-16 w-16 rounded-md object-cover" alt="" />
+            <img src={mediaUrl(o.products[0]?.image)} className="h-16 w-16 rounded-md object-cover" alt="" />
             <div className="flex-1">
               <p className="text-sm font-medium text-ink">#{o.orderNumber}</p>
               <p className="text-xs text-ink-soft">

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Trash2, ArrowUp, ArrowDown, Upload, Link2, Play, Loader2, RefreshCcw } from "lucide-react";
 import toast from "react-hot-toast";
 import { adminApi, getErrorMessage } from "../../lib/api.js";
+import { mediaUrl } from "../../lib/media.js";
 
 function detectPlatform(url) {
   if (/tiktok\.com/i.test(url)) return "tiktok";
@@ -54,7 +55,7 @@ export function ImageManager({ images, onChange }) {
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
         {images.map((img, idx) => (
           <div key={idx} className="group relative aspect-square overflow-hidden rounded-md border border-cream-deep">
-            <img src={img.url} alt="" className="h-full w-full object-cover" />
+            <img src={mediaUrl(img.url)} alt="" className="h-full w-full object-cover" />
             <div className="absolute inset-0 flex items-center justify-center gap-1 bg-ink/0 opacity-0 transition group-hover:bg-ink/50 group-hover:opacity-100">
               <button type="button" onClick={() => move(idx, -1)} className="rounded-full bg-white/90 p-1.5"><ArrowUp size={12} /></button>
               <button type="button" onClick={() => move(idx, 1)} className="rounded-full bg-white/90 p-1.5"><ArrowDown size={12} /></button>
@@ -168,7 +169,7 @@ export function VideoManager({ videos, onChange }) {
                 title="Open the real video"
                 className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md bg-cream-deep text-ink-soft hover:opacity-80"
               >
-                {v.thumbnail ? <img src={v.thumbnail} alt="" className="h-full w-full object-cover" /> : <Play size={16} />}
+                {v.thumbnail ? <img src={mediaUrl(v.thumbnail)} alt="" className="h-full w-full object-cover" /> : <Play size={16} />}
               </a>
               <input placeholder="Video title" className="input flex-1 text-xs" value={v.title} onChange={(e) => update(idx, "title", e.target.value)} />
               <select className="select w-32 text-xs" value={v.type} onChange={(e) => update(idx, "type", e.target.value)}>

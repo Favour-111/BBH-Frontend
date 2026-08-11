@@ -3,6 +3,7 @@ import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { useCartStore, lineKey } from "../store/cartStore.js";
 import { useSiteData } from "../context/SiteDataContext.jsx";
 import { formatNaira } from "../lib/format.js";
+import { mediaUrl } from "../lib/media.js";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
 import EmptyState from "../components/ui/EmptyState.jsx";
@@ -58,7 +59,7 @@ export default function Cart() {
                 return (
                   <tr key={key} className="border-b border-cream-deep last:border-0">
                     <td className="flex items-center gap-4 p-5">
-                      <img src={item.image} alt={item.name} className="h-16 w-16 rounded-md object-cover" />
+                      <img src={mediaUrl(item.image)} alt={item.name} className="h-16 w-16 rounded-md object-cover" />
                       <div>
                         <Link to={`/product/${item.slug}`} className="text-sm font-medium text-ink hover:text-gold">
                           {item.name}

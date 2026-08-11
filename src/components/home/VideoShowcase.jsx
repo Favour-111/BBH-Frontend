@@ -5,13 +5,14 @@ import { cachedGet } from "../../lib/api.js";
 import Container from "../ui/Container.jsx";
 import SectionHeading from "../ui/SectionHeading.jsx";
 import { formatNaira } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 
 function VideoCard({ product, video }) {
   return (
     <div className="group relative aspect-[9/16] shrink-0 basis-[260px] overflow-hidden rounded-lg bg-ink">
       <a href={video.url} target="_blank" rel="noreferrer" aria-label="Watch on TikTok" className="absolute inset-0">
         {video.thumbnail ? (
-          <img src={video.thumbnail} alt={video.title || product.name} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
+          <img src={mediaUrl(video.thumbnail)} alt={video.title || product.name} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
         ) : (
           <div className="h-full w-full bg-cream-deep/20" />
         )}

@@ -6,6 +6,7 @@ import api, { getErrorMessage } from "../lib/api.js";
 import { useCartStore } from "../store/cartStore.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { formatNaira } from "../lib/format.js";
+import { mediaUrl } from "../lib/media.js";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
 
@@ -182,7 +183,7 @@ export default function Checkout() {
           <div className="max-h-64 space-y-3 overflow-y-auto">
             {items.map((item) => (
               <div key={item.productId + (item.variant?.size || "")} className="flex items-center gap-3">
-                <img src={item.image} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
+                <img src={mediaUrl(item.image)} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
                 <div className="flex-1">
                   <p className="text-xs font-medium text-ink line-clamp-1">{item.name}</p>
                   <p className="text-[11px] text-ink-soft">Qty: {item.quantity}</p>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Play, ImageOff } from "lucide-react";
 import { cachedGet } from "../lib/api.js";
+import { mediaUrl } from "../lib/media.js";
 import Container from "../components/ui/Container.jsx";
 import EmptyState from "../components/ui/EmptyState.jsx";
 import { InstagramIcon, TiktokIcon } from "../components/ui/SocialIcons.jsx";
@@ -75,7 +76,7 @@ export default function Portfolio() {
                   className="group relative aspect-[3/4] overflow-hidden rounded-md bg-cream-deep"
                 >
                   {item.thumbnail && (
-                    <img src={item.thumbnail} alt={item.title} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
+                    <img src={mediaUrl(item.thumbnail)} alt={item.title} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
                   )}
                   <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink">
                     <Play size={13} />

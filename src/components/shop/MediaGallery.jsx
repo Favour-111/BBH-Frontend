@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Play, ChevronDown, ChevronUp } from "lucide-react";
 import clsx from "clsx";
+import { mediaUrl } from "../../lib/media.js";
 
 export default function MediaGallery({ images = [], videos = [] }) {
   const media = [...images.map((img) => ({ type: "image", ...img })), ...videos.map((v) => ({ type: "video", ...v }))];
@@ -28,7 +29,7 @@ export default function MediaGallery({ images = [], videos = [] }) {
               activeIdx === idx ? "border-gold" : "border-transparent"
             )}
           >
-            <img src={m.type === "video" ? m.thumbnail || m.url : m.url} alt="" className="h-full w-full object-cover" />
+            <img src={mediaUrl(m.type === "video" ? m.thumbnail || m.url : m.url)} alt="" className="h-full w-full object-cover" />
             {m.type === "video" && (
               <span className="absolute inset-0 flex items-center justify-center bg-ink/30">
                 <Play size={14} className="fill-white text-white" />
@@ -48,7 +49,7 @@ export default function MediaGallery({ images = [], videos = [] }) {
 
       <div className="relative flex-1 overflow-hidden rounded-md bg-cream-deep">
         {active.type === "image" ? (
-          <img src={active.url} alt={active.alt} className="aspect-square w-full object-cover sm:aspect-[4/5]" />
+          <img src={mediaUrl(active.url)} alt={active.alt} className="aspect-square w-full object-cover sm:aspect-[4/5]" />
         ) : (
           <a
             href={active.url}
@@ -57,7 +58,7 @@ export default function MediaGallery({ images = [], videos = [] }) {
             className="group relative block aspect-square sm:aspect-[4/5]"
           >
             {active.thumbnail ? (
-              <img src={active.thumbnail} alt={active.title || ""} className="h-full w-full object-cover" />
+              <img src={mediaUrl(active.thumbnail)} alt={active.title || ""} className="h-full w-full object-cover" />
             ) : (
               <div className="h-full w-full bg-cream-deep" />
             )}

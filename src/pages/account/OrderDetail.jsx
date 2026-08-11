@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { PackageCheck } from "lucide-react";
 import api from "../../lib/api.js";
 import { formatNaira, formatDateTime } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import Badge from "../../components/ui/Badge.jsx";
 import PageLoader from "../../components/ui/PageLoader.jsx";
 
@@ -64,7 +65,7 @@ export default function OrderDetail() {
           <div className="space-y-4">
             {order.products.map((item, i) => (
               <div key={i} className="flex items-center gap-4 border-b border-cream-deep pb-4 last:border-0">
-                <img src={item.image} className="h-16 w-16 rounded-md object-cover" alt={item.name} />
+                <img src={mediaUrl(item.image)} className="h-16 w-16 rounded-md object-cover" alt={item.name} />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-ink">{item.name}</p>
                   <p className="text-xs text-ink-soft">Qty: {item.quantity}</p>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ShoppingBag, PackageCheck, Heart, Crown } from "lucide-react";
 import api from "../../lib/api.js";
 import { formatNaira, formatDate } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 
@@ -61,7 +62,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               {orders.slice(0, 4).map((o) => (
                 <Link key={o._id} to={`/account/orders/${o._id}`} className="flex items-center gap-4 border-b border-cream-deep pb-4 last:border-0">
-                  <img src={o.products[0]?.image} className="h-14 w-14 rounded-md object-cover" alt="" />
+                  <img src={mediaUrl(o.products[0]?.image)} className="h-14 w-14 rounded-md object-cover" alt="" />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-ink">{o.products[0]?.name}</p>
                     <p className="text-xs text-ink-soft">
