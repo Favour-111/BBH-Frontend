@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Search, PackageCheck, PackageX } from "lucide-react";
 import api, { getErrorMessage } from "../lib/api.js";
 import { formatNaira, formatDateTime } from "../lib/format.js";
+import { mediaUrl } from "../lib/media.js";
 import Container from "../components/ui/Container.jsx";
 import Button from "../components/ui/Button.jsx";
 import Badge from "../components/ui/Badge.jsx";
@@ -135,7 +136,7 @@ export default function TrackOrder() {
             <div className="space-y-3">
               {order.products.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <img src={item.image} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
+                  <img src={mediaUrl(item.image)} className="h-12 w-12 rounded-md object-cover" alt={item.name} />
                   <div className="flex-1">
                     <p className="text-sm text-ink">{item.name}</p>
                     <p className="text-xs text-ink-soft">Qty: {item.quantity}</p>

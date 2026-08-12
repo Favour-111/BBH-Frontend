@@ -4,6 +4,7 @@ import { ShoppingBag, Wallet, Users, Package, Clock, AlertTriangle, Plus, Folder
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { adminApi } from "../../lib/api.js";
 import { formatNaira, formatDate } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import StatCard from "../../components/admin/StatCard.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 
@@ -94,7 +95,7 @@ export default function AdminDashboard() {
           <div className="space-y-3">
             {topProducts.map((p) => (
               <div key={p._id} className="flex items-center gap-3">
-                <img src={p.images?.[0]?.url} className="h-10 w-10 rounded-md object-cover" alt="" />
+                <img src={mediaUrl(p.images?.[0]?.url)} className="h-10 w-10 rounded-md object-cover" alt="" />
                 <div className="flex-1">
                   <p className="text-sm text-ink line-clamp-1">{p.name}</p>
                   <p className="text-xs text-ink-soft">{p.soldCount} sold</p>
@@ -118,7 +119,7 @@ export default function AdminDashboard() {
           <div className="space-y-3">
             {lowStockProducts.map((p) => (
               <div key={p._id} className="flex items-center gap-3">
-                <img src={p.images?.[0]?.url} className="h-10 w-10 rounded-md object-cover" alt="" />
+                <img src={mediaUrl(p.images?.[0]?.url)} className="h-10 w-10 rounded-md object-cover" alt="" />
                 <p className="flex-1 text-sm text-ink line-clamp-1">{p.name}</p>
                 <span className="text-xs font-medium text-red-500">Stock: {p.stock}</span>
               </div>

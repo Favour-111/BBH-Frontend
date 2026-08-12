@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { adminApi, getErrorMessage } from "../../lib/api.js";
 import { formatNaira, formatDate } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import Badge from "../../components/ui/Badge.jsx";
 import PageLoader from "../../components/ui/PageLoader.jsx";
 
@@ -108,7 +109,7 @@ export default function AdminCustomerDetail() {
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-wide text-ink">Wishlist ({wishlist?.products?.length || 0})</h3>
             <div className="flex flex-wrap gap-2">
               {(wishlist?.products || []).map((p) => (
-                <img key={p._id} src={p.images?.[0]?.url} className="h-12 w-12 rounded-md object-cover" alt={p.name} title={p.name} />
+                <img key={p._id} src={mediaUrl(p.images?.[0]?.url)} className="h-12 w-12 rounded-md object-cover" alt={p.name} title={p.name} />
               ))}
               {(!wishlist?.products || wishlist.products.length === 0) && <p className="text-sm text-ink-soft">Empty wishlist.</p>}
             </div>

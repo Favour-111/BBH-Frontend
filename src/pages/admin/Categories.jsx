@@ -8,6 +8,7 @@ import Badge from "../../components/ui/Badge.jsx";
 import Modal, { ConfirmDialog } from "../../components/ui/Modal.jsx";
 import EmptyState from "../../components/ui/EmptyState.jsx";
 import { ImageManager } from "../../components/admin/MediaManager.jsx";
+import { mediaUrl } from "../../lib/media.js";
 
 const emptyForm = { name: "", description: "", image: "", status: "active" };
 
@@ -95,7 +96,7 @@ export default function AdminCategories() {
           {categories.map((c) => (
             <div key={c._id} className="overflow-hidden rounded-lg bg-white shadow-sm">
               <div className="aspect-[16/9] bg-cream-deep">
-                {c.image && <img src={c.image} alt={c.name} className="h-full w-full object-cover" />}
+                {c.image && <img src={mediaUrl(c.image)} alt={c.name} className="h-full w-full object-cover" />}
               </div>
               <div className="p-4">
                 <div className="flex items-center justify-between">

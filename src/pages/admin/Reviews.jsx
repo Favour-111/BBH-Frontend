@@ -9,6 +9,7 @@ import { ConfirmDialog } from "../../components/ui/Modal.jsx";
 import StarRating from "../../components/ui/StarRating.jsx";
 import EmptyState from "../../components/ui/EmptyState.jsx";
 import clsx from "clsx";
+import { mediaUrl } from "../../lib/media.js";
 
 const tabs = ["all", "pending", "approved", "rejected"];
 
@@ -93,7 +94,7 @@ export default function AdminReviews() {
             <div key={r._id} className="rounded-lg bg-white p-5 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <img src={r.product?.images?.[0]?.url} className="h-12 w-12 rounded-md object-cover" alt="" />
+                  <img src={mediaUrl(r.product?.images?.[0]?.url)} className="h-12 w-12 rounded-md object-cover" alt="" />
                   <div>
                     <p className="text-sm font-medium text-ink">{r.product?.name}</p>
                     <p className="text-xs text-ink-soft">by {r.user?.name} &bull; {formatDate(r.createdAt)}</p>

@@ -8,6 +8,7 @@ import Button from "../../components/ui/Button.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import Modal, { ConfirmDialog } from "../../components/ui/Modal.jsx";
 import EmptyState from "../../components/ui/EmptyState.jsx";
+import { mediaUrl } from "../../lib/media.js";
 
 const categories = ["makeup", "jewelry", "content", "campaigns"];
 
@@ -123,7 +124,7 @@ export default function AdminPortfolio() {
           {items.map((item) => (
             <div key={item._id} className="overflow-hidden rounded-lg bg-white shadow-sm">
               <a href={item.url} target="_blank" rel="noreferrer" className="block aspect-[4/3] bg-cream-deep">
-                {item.thumbnail && <img src={item.thumbnail} alt={item.title} className="h-full w-full object-cover" />}
+                {item.thumbnail && <img src={mediaUrl(item.thumbnail)} alt={item.title} className="h-full w-full object-cover" />}
               </a>
               <div className="p-4">
                 <div className="flex items-start justify-between gap-2">
@@ -190,7 +191,7 @@ export default function AdminPortfolio() {
           </p>
           {form.thumbnail && (
             <div className="flex items-center gap-3 rounded-md border border-cream-deep p-2">
-              <img src={form.thumbnail} alt="Thumbnail preview" className="h-14 w-14 rounded object-cover" />
+              <img src={mediaUrl(form.thumbnail)} alt="Thumbnail preview" className="h-14 w-14 rounded object-cover" />
               <span className="text-xs text-ink-soft">Thumbnail preview</span>
             </div>
           )}

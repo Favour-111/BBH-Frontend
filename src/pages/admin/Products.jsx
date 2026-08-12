@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Plus, Search, Edit2, Trash2, Copy, Eye, Package, CheckCircle, FileEdit, AlertTriangle, Loader2 } from "lucide-react";
 import { adminApi, getErrorMessage } from "../../lib/api.js";
 import { formatNaira } from "../../lib/format.js";
+import { mediaUrl } from "../../lib/media.js";
 import { useSiteData } from "../../context/SiteDataContext.jsx";
 import PageHeader from "../../components/admin/PageHeader.jsx";
 import StatCard from "../../components/admin/StatCard.jsx";
@@ -175,7 +176,7 @@ export default function AdminProducts() {
               products.map((p) => (
                 <tr key={p._id} className="border-b border-cream-deep last:border-0 hover:bg-cream/40">
                   <td className="flex items-center gap-3 p-4">
-                    <img src={p.images?.[0]?.url} className="h-11 w-11 rounded-md object-cover" alt="" />
+                    <img src={mediaUrl(p.images?.[0]?.url)} className="h-11 w-11 rounded-md object-cover" alt="" />
                     <div>
                       <p className="text-sm font-medium text-ink line-clamp-1">{p.name}</p>
                       {p.bestSeller && <span className="text-[10px] text-gold">Best Seller</span>}

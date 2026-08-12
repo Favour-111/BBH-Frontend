@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Heart, ShoppingBag, Truck, RefreshCcw, ShieldCheck, Headset, Minus, Plus, Loader2, Play, Star } from "lucide-react";
 import toast from "react-hot-toast";
 import api, { cachedGet, getErrorMessage } from "../lib/api.js";
+import { mediaUrl } from "../lib/media.js";
 import { formatNaira } from "../lib/format.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useCartStore } from "../store/cartStore.js";
@@ -237,7 +238,7 @@ export default function ProductDetail() {
                         rel="noreferrer"
                         className="group relative block aspect-[3/4] overflow-hidden rounded-md bg-cream-deep"
                       >
-                        {v.thumbnail && <img src={v.thumbnail} alt={v.title || ""} className="h-full w-full object-cover" />}
+                        {v.thumbnail && <img src={mediaUrl(v.thumbnail)} alt={v.title || ""} className="h-full w-full object-cover" />}
                         <div className="absolute inset-0 flex items-center justify-center bg-ink/20 transition group-hover:bg-ink/40">
                           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink">
                             <Play size={14} className="ml-0.5" />

@@ -9,6 +9,7 @@ import Badge from "../../components/ui/Badge.jsx";
 import Modal, { ConfirmDialog } from "../../components/ui/Modal.jsx";
 import EmptyState from "../../components/ui/EmptyState.jsx";
 import ContentMedia from "../../components/ui/ContentMedia.jsx";
+import { mediaUrl } from "../../lib/media.js";
 
 const platforms = ["instagram", "tiktok", "youtube"];
 const accountTypes = ["jewelry", "creator"];
@@ -197,7 +198,7 @@ export default function AdminContent() {
           )}
           {form.thumbnail && (
             <div className="flex items-center gap-3 rounded-md border border-cream-deep p-2">
-              <img src={form.thumbnail} alt="Thumbnail preview" className="h-14 w-14 rounded object-cover" />
+              <img src={mediaUrl(form.thumbnail)} alt="Thumbnail preview" className="h-14 w-14 rounded object-cover" />
               <span className="text-xs text-ink-soft">Thumbnail preview</span>
             </div>
           )}
