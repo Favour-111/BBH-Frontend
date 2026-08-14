@@ -31,6 +31,10 @@ body {
   font-family: var(--font-display);
 }
 
+.font-brush {
+  font-family: "Alex Brush", cursive;
+}
+
 ::selection {
   background: var(--color-gold-soft);
   color: var(--color-ink);

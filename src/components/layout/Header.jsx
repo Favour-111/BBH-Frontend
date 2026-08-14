@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, Heart, ShoppingBag, Menu, X } from "lucide-react";
 import { useCartStore } from "../../store/cartStore.js";
 import { useAuth } from "../../context/AuthContext.jsx";
@@ -19,6 +19,13 @@ const navLinks = [
   { to: "/contact", label: "Contact" },
 ];
 
+function Logo({ isShop, className }) {
+  if (isShop) {
+    return <span className={clsx("font-brush text-gold", className)}>Melblings</span>;
+  }
+  return <img src={logo} alt="Beauty by Horbah's" className={clsx("object-contain", className)} />;
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -27,6 +34,8 @@ export default function Header() {
   const itemCount = useCartStore((s) => s.itemCount());
   const { user, wishlistIds } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isShop = location.pathname.startsWith("/shop");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -52,7 +61,7 @@ export default function Header() {
           </button>
 
           <Link to="/" className="shrink-0">
-            <img src={logo} alt="Beauty by Horbah's" className="h-8 w-auto object-contain sm:h-9 lg:h-12" />
+            <Logo isShop={isShop} className={isShop ? "text-3xl leading-none sm:text-4xl lg:text-5xl" : "h-8 w-auto sm:h-9 lg:h-12"} />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -124,7 +133,7 @@ export default function Header() {
             <div className="absolute inset-0 bg-ink/50" onClick={() => setOpen(false)} />
             <div className="absolute left-0 top-0 h-full w-72 animate-fade-up bg-ivory p-6 shadow-xl">
               <div className="mb-8 flex items-center justify-between">
-                <img src={logo} alt="Beauty by Horbah's" className="h-9 w-auto object-contain" />
+                <Logo isShop={isShop} className={isShop ? "text-3xl leading-none" : "h-9 w-auto"} />
                 <button onClick={() => setOpen(false)}>
                   <X size={20} />
                 </button>
